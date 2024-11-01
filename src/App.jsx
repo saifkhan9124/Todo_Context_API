@@ -8,7 +8,7 @@ function App() {
   const addTodo = (todo) => {
     setTodos((prev) => [{ id: Date.now(), ...todo }, ...prev]);
   };
-
+// hello world
   const upDateTodo = (id, todo) => {
     setTodos((prev) =>
       prev.map((prevTodo) => (prevTodo.id === id ? todo : prev))
@@ -26,7 +26,7 @@ function App() {
       <div className="bg-[#172842] min-h-screen py-8">
         <div className="w-full max-w-2xl mx-auto shadow-md rounded-lg px-4 py-3 text-white">
           <h1 className="text-2xl font-bold text-center mb-8 mt-2">
-            Manage Your Todos
+            Manage Your Todo List
           </h1>
           <div className="mb-4"></div>
           <div className="flex flex-wrap gap-y-3"></div>
