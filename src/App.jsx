@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import { TodoProvider } from "./Context";
+import TodoForm from "./Components/TodoForm";
+import TodoItem from "./Components/TodoItem";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -24,7 +26,7 @@ function App() {
   const toggleComplete = (id) => {
     setTodos((prev) =>
       prev.map((prevTodo) =>
-        prevTodo === id
+        prevTodo.id === id
           ? { ...prevTodo, completed: !prevTodo.completed }
           : prevTodo
       )
@@ -52,8 +54,16 @@ function App() {
           <h1 className="text-3xl font-bold text-center mb-10 mt-4">
             Manage Your Todo
           </h1>
-          <div className="mb-4"></div>
-          <div className="flex flex-wrap gap-y-3"></div>
+          <div className="mb-4">
+            <TodoForm />
+          </div>
+          <div className="flex flex-wrap gap-y-3">
+            {todos.map((todo) => (
+              <div key={todo.id} className="w-full">
+                <TodoItem todo={todo} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </TodoProvider>
